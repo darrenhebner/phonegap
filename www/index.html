@@ -2,49 +2,21 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mobile Test</title>
-
-<style>
-	body {margin:0px; padding:0px; background-color:#000;}
-	#myCanvas {position:absolute; background-color:powderblue;}
-</style>
+<link rel="stylesheet" href="main.css">
 </head>
 
-<body>
-<!-- canvas with id="myCanvas" is made by zim Frame -->
-	<script>
-		var zon = true;
-	</script>
-	
-	<script src="js/createjs-2015.11.26.min.js"></script><!-- add _doc to see code -->
-	<script src="js/zim_2.4.js"></script>
-
-
-	<script>
-		// SCALING OPTIONS
-		// "none"		sets canvas and stage to dimensions and does not scale if window changes
-		// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
-		// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
-		// "full"		sets canvas and stage to window size (canvas is actually set to screen size)
-
-		var scaling = "fit"; // fit scales to fit the browser window while keeping the aspect ratio
-		var width = 640;
-		var height = 960;
-		var frame = new zim.Frame(scaling, width, height);
-		frame.on("ready", function() {
-			zog("ready from ZIM Frame");
-
-			var stage = frame.stage;
-			var stageW = frame.width;
-			var stageH = frame.height;
-
-			// put your code here (you can delete this code)
-
-			var c = new zim.Circle(100, "teal");
-			stage.addChild(c);
-			zim.centerReg(c, stage);
-			stage.update();
-		}); // end of ready
-	</script>
+<body id="app">
+	<header>
+		<h1>Scale Shit</h1>
+	</header>
+	<ul>
+		<li v-on:click="addPitch($index)" v-for="note in randomNotes">
+			{{ note.pitch }}
+		</li>
+	</ul>
+	<script src="js/vue.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
