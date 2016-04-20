@@ -3,32 +3,41 @@ var app = new Vue({
 	data: {
 		notes: [
 			{
-				"pitch": 1
+				"pitch": 1,
+				"freq": 261.63
 			},
 			{
-				"pitch": 2
+				"pitch": 2,
+				"freq": 293.66
 			},
 			{
-				"pitch": 3
+				"pitch": 3,
+				"freq": 329.63
 			},
 			{
-				"pitch": 4
+				"pitch": 4,
+				"freq": 349.23
 			},
 			{
-				"pitch": 5
+				"pitch": 5,
+				"freq": 392.00
 			},
 			{
-				"pitch": 6
+				"pitch": 6,
+				"freq": 440.00
 			},
 			{
-				"pitch": 7
+				"pitch": 7,
+				"freq": 493.88
 			},
 			{
-				"pitch": 8
+				"pitch": 8,
+				"freq": 523.25
 			}
 		],
 		clickedNotes: [],
-		randomNotes: []
+		randomNotes: [],
+		showHelp: false
 	},
 	ready: function() {
 		this.shuffleArray(this.notes);
@@ -36,6 +45,7 @@ var app = new Vue({
 	methods: {
 		addPitch: function(index) {
 			this.clickedNotes.push(this.notes[index].pitch);
+			this.playSound(this.notes[index].freq);
 			this.checkWin();
 		},
 		checkWin: function() {
@@ -61,6 +71,27 @@ var app = new Vue({
 			}
 			this.randomNotes = array;
 		},
+		playSound: function(freq) {
+			var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+			//create oscillators
+			var oscillator = audioCtx.createOscillator();
+
+			var gainNode = audioCtx.createGain();
+			gainNode.gain.value = 1;
+
+			oscillator.type = 'sine';
+			oscillator.frequency.value = freq;
+			oscillator.start();
+
+			oscillator.connect(gainNode);
+			gainNode.connect(audioCtx.destination);
+
+			setTimeout(function(){
+				oscillator.stop();
+				audioCtx.close();
+			}, 300);
+		}
 	},
 	computed: {
 		lastEight: function() {

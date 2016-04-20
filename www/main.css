@@ -50,15 +50,43 @@ table {
 html {
 	box-sizing: border-box;
 	background: #FFF2EC;
-	color: black;
+	color: #333333;
 	font-family: sans-serif;
-	font-size: 1.6em;
 }
 
 header {
 	height: 10vh;
 	background: #FFF2EC;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	padding: 0 5%;
+	line-height: 10vh;
+}
+
+h1 {
+	font-size: 1.6em;
+	float: left;
+}
+
+h2 {
+	font-size: 1.6em;
+	margin: 1.2em 0;
+}
+
+.help-container {
+	margin: 0 auto;
+	width: 90%;
+}
+
+button {
+	background: none;
+	border: none;
+	float: right;
+	height: 10vh;
+	outline: none;
+}
+
+p {
+	line-height: 1.6em;
 }
 
 ul {
