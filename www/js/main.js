@@ -105,11 +105,3 @@ var app = new Vue({
 		}
 	}
 });
-
-// Add fastclick to remove tap delay on mobile
-
-if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function() {
-        FastClick.attach(document.body);
-    }, false);
-}
