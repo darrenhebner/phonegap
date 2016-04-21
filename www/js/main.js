@@ -4,35 +4,35 @@ var app = new Vue({
 		notes: [
 			{
 				"pitch": 1,
-				"freq": 261.63
+				"freq": 523.25
 			},
 			{
 				"pitch": 2,
-				"freq": 293.66
+				"freq": 587.33
 			},
 			{
 				"pitch": 3,
-				"freq": 329.63
+				"freq": 659.25
 			},
 			{
 				"pitch": 4,
-				"freq": 349.23
+				"freq": 698.46
 			},
 			{
 				"pitch": 5,
-				"freq": 392.00
+				"freq": 783.99
 			},
 			{
 				"pitch": 6,
-				"freq": 440.00
+				"freq": 880.00
 			},
 			{
 				"pitch": 7,
-				"freq": 493.88
+				"freq": 987.77
 			},
 			{
 				"pitch": 8,
-				"freq": 523.25
+				"freq": 1046.50
 			}
 		],
 		clickedNotes: [],
