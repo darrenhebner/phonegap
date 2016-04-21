@@ -37,12 +37,17 @@ var app = new Vue({
 		],
 		clickedNotes: [],
 		randomNotes: [],
-		showHelp: false
+		showHelp: false,
+		showWin: false
 	},
 	ready: function() {
 		this.shuffleArray(this.notes);
 	},
 	methods: {
+		restart: function() {
+			this.shuffleArray(this.notes);
+			this.showWin = false;
+		},
 		addPitch: function(index) {
 			this.clickedNotes.push(this.notes[index].pitch);
 			this.playSound(this.notes[index].freq);
@@ -54,8 +59,7 @@ var app = new Vue({
 			var inOrder = [1, 2, 3, 4, 5, 6, 7, 8].toString();
 
 			if ( sorted == inOrder ) {
-				alert("Win!");
-				_this.shuffleArray(_this.notes);
+				_this.showWin = true;
 			} 
 		},
 		shuffleArray: function(array) {
@@ -69,7 +73,9 @@ var app = new Vue({
 				array[m] = array[i];
 				array[i] = t;
 			}
-			this.randomNotes = array;
+
+			this.$set('randomNotes', array);
+			this.randomNotes.sort();
 		},
 		playSound: function(freq) {
 			var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -99,3 +105,11 @@ var app = new Vue({
 		}
 	}
 });
+
+// Add fastclick to remove tap delay on mobile
+
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}

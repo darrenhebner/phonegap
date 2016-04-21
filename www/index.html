@@ -9,12 +9,16 @@
 
 <body id="app">
 	<header>
-		<h1>Scale Shit</h1>
+		<h1>Ear Training</h1>
 		<button v-on:click="showHelp = !showHelp">
 			Help
 		</button>
 	</header>
 
+	<div class="win" v-show="showWin">
+		<h2>You Win!</h2>
+		<button v-on:click="restart">Play Again</button>
+	</div>
 	<div class="help-container" v-show="showHelp">
 		<h2>How to play</h2>
 		<p>
@@ -27,6 +31,7 @@
 			{{ note.pitch }}
 		</li>
 	</ul>
+	<script src="js/fastclick.js"></script>
 	<script src="js/vue.js"></script>
 	<script src="js/main.js"></script>
 </body>
