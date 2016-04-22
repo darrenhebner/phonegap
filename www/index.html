@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<div id="app">
+	<div id="app" v-touch:swipeleft="showHelp = true">
 		<header>
 			<h1>Ear Training</h1>
 			<button v-touch:tap="showHelp = !showHelp">
@@ -20,7 +20,7 @@
 			<h2>You Win!</h2>
 			<button v-touch:tap="restart">Play Again</button>
 		</div>
-		<div class="help-container" v-show="showHelp">
+		<div class="help-container" v-show="showHelp" v-touch:swiperight="showHelp = false">
 			<h2>How to play</h2>
 			<p>
 				The goal of this game is to tap the buttons in the correct order of the musical scale. Make sure to listen to each pitch and go from lowest to highest.

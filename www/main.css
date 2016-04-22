@@ -76,6 +76,7 @@ h2 {
 .help-container {
 	margin: 0 auto;
 	width: 90%;
+	height: 90vh;
 }
 
 .win {
